@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OOP_Assignment_03.Models
+namespace Cinema_Ticketing.Models
 {
     internal class StandardTicket:Ticket
     {
@@ -10,6 +10,19 @@ namespace OOP_Assignment_03.Models
             SeatNumber = seat;
         }
         public string SeatNumber { get; set; }
+
+        public override string PrintTicket()
+        {
+            string ticketInfo = $@"
+Ticket ID: {Id}
+Movie Name: {MovieName}
+Price: {Price}
+Price After Tax: {PriceAfterTax}
+Seat Number: {SeatNumber}
+Ticet Type: Standard Ticket
+";
+            return ticketInfo;
+        }
         public override string ToString()
         {
             string Info = $@"

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OOP_Assignment_03.Models
+namespace Cinema_Ticketing.Models
 {
     internal class IMAXTicket : Ticket
     {
@@ -12,6 +12,19 @@ namespace OOP_Assignment_03.Models
             if (Is3d)
                 Price += 20;
             this.Is3d = Is3d;
+        }
+
+        public override string PrintTicket()
+        {
+            string ticketInfo = $@"
+Ticket ID: {Id}
+Movie Name: {MovieName}
+Price: {Price}
+Price After Tax: {PriceAfterTax}
+IS 3D: {(Is3d ? "Yes" : "No")}
+Ticet Type: IMAX Ticket
+";
+            return ticketInfo;
         }
 
         public override string ToString()

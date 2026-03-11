@@ -2,13 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OOP_Assignment_03.Models
+namespace Cinema_Ticketing.Models
 {
     internal class VIPTicket : Ticket
     {
         public VIPTicket(string Name, decimal price) : base(Name, price) { }
         public bool LoungeAccess { get; set; }
         public decimal ServiceFee = 50;
+
+
+        public override string PrintTicket()
+        {
+            string ticketInfo = $@"
+Ticket ID: {Id}
+Movie Name: {MovieName}
+Price: {Price}
+Price After Tax: {PriceAfterTax}
+Lounge Access: {(LoungeAccess ? "Yes" : "No")}
+Service Fee: {ServiceFee}
+Ticet Type: VIP Ticket
+";
+            return ticketInfo;
+        }
 
         public override string ToString()
         {

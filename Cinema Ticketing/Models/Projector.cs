@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OOP_Assignment_03.Models
+namespace Cinema_Ticketing.Models
 {
     internal class Projector
     {

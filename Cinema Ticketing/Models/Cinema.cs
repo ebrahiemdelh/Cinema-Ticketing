@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OOP_Assignment_03.Models
+namespace Cinema_Ticketing.Models
 {
     internal class Cinema
     {
@@ -32,9 +32,15 @@ namespace OOP_Assignment_03.Models
             sb.AppendLine("Tickets:");
             for (int i = 0; i < TicketCount; i++)
             {
-                sb.AppendLine(Tickets[i].ToString());
+                sb.AppendLine(Tickets[i].PrintTicket());
+                sb.AppendLine("-----------------------------");
             }
             return sb.ToString();
+        }
+
+        public static void ProcessTicket(Ticket t)
+        {
+            Console.WriteLine(t.PrintTicket());
         }
         public void OpenCinema()
         {
