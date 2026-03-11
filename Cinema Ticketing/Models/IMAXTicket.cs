@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace OOP_Assignment_03.Models
+{
+    internal class IMAXTicket : Ticket
+    {
+        private bool Is3d;
+        public IMAXTicket(string Name, decimal price, bool Is3d) : base(Name, price)
+        {
+            if (Is3d)
+                Price += 20;
+            this.Is3d = Is3d;
+        }
+
+        public override string ToString()
+        {
+            string Info = $@"
+MovieName: {MovieName}
+Price: {Price}
+Price After Tax: {PriceAfterTax}
+Ticket Type: IMAX
+Is 3D: {(Is3d ? "Yes" : "No")}
+";
+            return Info;
+        }
+
+    }
+}
