@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinema_Ticketing.Services.Interface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -23,8 +24,13 @@ Price: {Price}
 Price After Tax: {PriceAfterTax}
 IS 3D: {(Is3d ? "Yes" : "No")}
 Ticet Type: IMAX Ticket
+Booked: {(IsBooked ? "Yes" : "No")}
 ";
             return ticketInfo;
+        }
+        public void Print()
+        {
+            Console.WriteLine(PrintTicket());
         }
 
         public override string ToString()

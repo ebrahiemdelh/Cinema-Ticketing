@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Cinema_Ticketing.Services.Interface;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Cinema_Ticketing.Models
 {
-    internal class StandardTicket:Ticket
+    internal class StandardTicket : Ticket
     {
-        public StandardTicket(string Name, decimal price,string seat) : base(Name, price) {
+        public StandardTicket(string Name, decimal price, string seat) : base(Name, price)
+        {
             SeatNumber = seat;
         }
         public string SeatNumber { get; set; }
@@ -22,6 +24,10 @@ Seat Number: {SeatNumber}
 Ticet Type: Standard Ticket
 ";
             return ticketInfo;
+        }
+        public void Print()
+        {
+            Console.WriteLine(PrintTicket());
         }
         public override string ToString()
         {

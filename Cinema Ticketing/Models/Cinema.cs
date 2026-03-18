@@ -25,6 +25,7 @@ namespace Cinema_Ticketing.Models
                 Console.WriteLine("Cinema ticket limit reached.");
             }
         }
+
         public string PrintAllTickets()
         {
             StringBuilder sb = new StringBuilder();
@@ -36,6 +37,22 @@ namespace Cinema_Ticketing.Models
                 sb.AppendLine("-----------------------------");
             }
             return sb.ToString();
+        }
+
+        // New: print using IPrintData polymorphism
+        public void PrintAllUsingInterface()
+        {
+            for (int i = 0; i < TicketCount; i++)
+            {
+                if (Tickets[i] is Cinema_Ticketing.Services.Interface.IPrintData printable)
+                {
+                    printable.Print();
+                }
+                else
+                {
+                    Console.WriteLine(Tickets[i].PrintTicket());
+                }
+            }
         }
 
         public static void ProcessTicket(Ticket t)
