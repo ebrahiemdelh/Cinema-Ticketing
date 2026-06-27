@@ -25,6 +25,7 @@ Ticet Type: Standard Ticket
 ";
             return ticketInfo;
         }
+        public override decimal CalculateFinalPrice() => Price * 1.14m;
         public void Print()
         {
             Console.WriteLine(PrintTicket());

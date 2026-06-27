@@ -26,7 +26,7 @@ Booked: {(IsBooked ? "Yes" : "No")}
 ";
             return ticketInfo;
         }
-
+        public override decimal CalculateFinalPrice() => (Price + ServiceFee) * 1.14m;
         public override string ToString()
         {
             string Info = $@"

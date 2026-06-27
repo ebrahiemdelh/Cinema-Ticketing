@@ -1,11 +1,8 @@
 ﻿using Cinema_Ticketing.Services.Interface;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Cinema_Ticketing.Models
 {
-    internal class IMAXTicket : Ticket
+    internal class IMAXTicket : Ticket, IPrintData
     {
         private bool Is3d;
         public IMAXTicket(string Name, decimal price, bool Is3d) : base(Name, price)
@@ -28,6 +25,7 @@ Booked: {(IsBooked ? "Yes" : "No")}
 ";
             return ticketInfo;
         }
+        public override decimal CalculateFinalPrice() => Price * 1.14m;
         public void Print()
         {
             Console.WriteLine(PrintTicket());

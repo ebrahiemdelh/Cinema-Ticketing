@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Cinema_Ticketing.Services.Interface;
+﻿using Cinema_Ticketing.Services.Interface;
 
 namespace Cinema_Ticketing.Models
 {
-    internal class Ticket : IPrintData, IBookable, ICloneable
+    internal abstract class Ticket : IPrintData, IBookable, ICloneable
     {
         public Ticket(string Name, decimal price)
         {
@@ -31,7 +28,7 @@ namespace Cinema_Ticketing.Models
 
             }
         }
-        public decimal PriceAfterTax => Price * 1.14m;
+        public decimal PriceAfterTax => CalculateFinalPrice();
 
         public void SetPrice(decimal price)
         {
@@ -65,17 +62,19 @@ namespace Cinema_Ticketing.Models
             return true;
         }
 
-        // Printing
+        // Add this new abstract method
+        public abstract decimal CalculateFinalPrice();
+
+        // PrintTicket stays virtual as before
         public virtual string PrintTicket()
         {
-            string ticketInfo = $@"
+            return $@"
 Ticket ID: {Id}
 Movie Name: {MovieName}
 Price: {Price}
-Price After Tax: {PriceAfterTax}
+Price After Tax: {CalculateFinalPrice()}
 Booked: {(IsBooked ? "Yes" : "No")}
 ";
-            return ticketInfo;
         }
 
         public void Print()
@@ -99,7 +98,7 @@ Price After Tax: {PriceAfterTax}
         public virtual object Clone()
         {
             // MemberwiseClone is fine for primitive fields; derived classes should deep clone if needed
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
     }
 }
